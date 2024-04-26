@@ -13,7 +13,7 @@ const Login = () => {
 
     return (
         <div className="lg:w-[600px] mx-auto lg:mt-10">
-            <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+            <form onSubmit={handleSubmit(onSubmit)} className=" space-y-6">
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text font-bold">Email address</span>
