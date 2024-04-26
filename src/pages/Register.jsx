@@ -5,28 +5,45 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "./provider/AuthProvider";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
+const MySwal = withReactContent(Swal)
 
 const Register = () => {
     const { userRegistration } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors }, } = useForm()
     const [showPass, setShowPass] = useState(false);
+    const [errorMessage, setErrorMessage] = useState(null);
 
     const onSubmit = (data) => {
         const { name, photoUrl, email, password } = data;
 
         if (password.length < 6) {
-            toast.error("Password must be at least 6 characters long");
+            setErrorMessage("Password must be at least 6 characters long");
         }
         else if (!password.match(/[a-z]/)) {
-            toast.error("Password must contain at least one lowercase letter");
+            setErrorMessage("Password must contain at least one lowercase letter");
         }
         else if (!password.match(/[A-Z]/)) {
-            toast.error("Password must contain at least one uppercase letter");
+            setErrorMessage("Password must contain at least one uppercase letter");
         }
         else {
             userRegistration(email, password)
                 .then(result => {
                     console.log(result);
+                    MySwal.fire({
+                        title: <p className="text-3xl font-bold text-blue-900 mb-4">Welcome aboard!</p>,
+                        html: (
+                            <div className="text-lg text-footer">
+                                <p>You have successfully registered.</p>
+                                <p>Thank you for registering. You are now a part of our community!</p>
+                            </div>
+                        ),
+                        icon: "success",
+                        confirmButtonColor: 'primary',
+                        confirmButtonText: "Let's get started!"
+                    })
                 })
                 .catch(error => {
                     console.log(error);
@@ -35,7 +52,7 @@ const Register = () => {
     }
 
     return (
-        <div className="lg:w-[600px] mx-auto lg:mt-10">
+        <div className="md:w-[600px] mx-auto lg:mt-10">
             <form onSubmit={handleSubmit(onSubmit)} className=" space-y-6">
                 <div className="form-control">
                     <label className="label">
@@ -71,6 +88,7 @@ const Register = () => {
                         </span>
                     </span>
                     {errors.password && <span className=" text-red-500">This field is required</span>}
+                    {errorMessage && <span className=" text-red-500">{errorMessage}</span>}
                 </div>
                 <div className="form-control flex flex-row items-center">
                     <input name="checkbox" type="checkbox" id="termsAndConditions" className="mr-2" {...register("checkbox", { required: true })} />
@@ -80,7 +98,7 @@ const Register = () => {
                 </div>
                 {errors.checkbox && <span className=" text-red-500">Accept our term & conditions to proceed</span>}
                 <div className="form-control mt-6">
-                    <button className="btn text-white bg-primary hover:bg-primary transition duration-300 ease-in-out">Register</button>
+                    <button className="btn text-white bg-primary hover:bg-transparent hover:border hover:border-primary hover:text-primary transition duration-300 ease-in-out">Register</button>
                 </div>
                 <p className=" mt-3 text-center">Already Have An Account ? <Link className=" text-red-500" to={'/login'}>Login</Link></p>
             </form>

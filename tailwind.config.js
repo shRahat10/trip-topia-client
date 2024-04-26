@@ -10,7 +10,8 @@ export default {
         poppins: '"Poppins", sans-serif'
       },
       colors: {
-        primary: '#8576FF'
+        primary: '#8576FF',
+        footer: '#1C1678'
       }
     },
   },

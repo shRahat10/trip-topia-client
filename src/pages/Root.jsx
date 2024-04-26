@@ -6,13 +6,20 @@ import Footer from "./shared/Footer";
 const Root = () => {
     return (
         <>
-            <div className=" max-w-[1440px] mx-auto p-5 font-poppins font-medium">
-                <Navbar></Navbar>
+            <div className=" bg-gray-200">
+                <div className="max-w-[1440px] mx-auto px-[5%]">
+                    <Navbar></Navbar>
+                </div>
+            </div>
+            <div className=" max-w-[1440px] mx-auto px-[5%] font-poppins font-medium">
                 <Outlet></Outlet>
             </div>
-            <div className=" max-w-[1440px] mx-auto px-5 p-10 font-poppins font-medium">
-                <Footer></Footer>
+            <div className=" bg-footer">
+                <div className="max-w-[1440px] mx-auto px-[5%]">
+                    <Footer></Footer>
+                </div>
             </div>
+
         </>
     );
 };

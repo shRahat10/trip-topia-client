@@ -5,6 +5,8 @@ import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "./provider/AuthProvider";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
     const { userLogin, googleSignIn, githubSignIn } = useContext(AuthContext);
@@ -17,6 +19,7 @@ const Login = () => {
         userLogin(email, password)
             .then(result => {
                 console.log(result);
+                toast.success('Successfully Logged In');
             })
             .catch(error => {
                 console.log(error);
@@ -27,6 +30,7 @@ const Login = () => {
         googleSignIn()
             .then(result => {
                 console.log(result);
+                toast.success('Successfully Logged In');
             })
             .catch(error => {
                 console.log(error);
@@ -37,6 +41,7 @@ const Login = () => {
         githubSignIn()
             .then(result => {
                 console.log(result);
+                toast.success('Successfully Logged In');
             })
             .catch(error => {
                 console.log(error);
@@ -44,7 +49,7 @@ const Login = () => {
     }
 
     return (
-        <div className="lg:w-[600px] mx-auto lg:mt-10">
+        <div className="md:w-[600px] mx-auto lg:mt-10">
             <form onSubmit={handleSubmit(onSubmit)} className=" space-y-6">
                 <div className="form-control">
                     <label className="label">
@@ -71,7 +76,7 @@ const Login = () => {
                     <p className=" text-end text-gray-500">Forgot password?</p>
                 </div>
                 <div className="form-control mt-6">
-                    <button className="btn text-white bg-primary hover:bg-primary transition duration-300 ease-in-out">Login</button>
+                    <button className="btn text-white bg-primary hover:bg-transparent hover:border hover:border-primary hover:text-primary transition duration-300 ease-in-out">Login</button>
                 </div>
             </form>
             <div className=" m-6 space-y-4">

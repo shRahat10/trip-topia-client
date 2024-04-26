@@ -23,7 +23,7 @@ const Navbar = () => {
     );
 
     return (
-        <div className="navbar p-0 bg-base-100 mb-16">
+        <div className="navbar mb-16 bg-transparent py-4">
             {/* dropdown and website title */}
             <div className="navbar-start">
                 <div className="dropdown">
@@ -55,8 +55,8 @@ const Navbar = () => {
             <div className="navbar-end">
                 {
                     user 
-                    ? <button onClick={handleUserLogout} className=" bg-primary text-white py-2 px-4 rounded">Logout</button>
-                    : <Link to={'/login'}><button className=" bg-primary text-white py-2 px-4 rounded">Login</button></Link>
+                    ? <button onClick={handleUserLogout} className=" bg-primary text-white py-2 px-4 rounded hover:bg-transparent hover:border hover:border-primary hover:text-primary transition duration-300 ease-in-out">Logout</button>
+                    : <Link to={'/login'}><button className=" bg-primary text-white py-2 px-4 rounded hover:bg-transparent hover:border hover:border-primary hover:text-primary transition duration-300 ease-in-out">Login</button></Link>
                 }
                 
             </div>

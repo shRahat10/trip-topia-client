@@ -2,8 +2,8 @@
 
 const Footer = () => {
     return (
-        <div>
-            
+        <div className=" text-white bg-transparent py-6 mt-16">
+            footer
         </div>
     );
 };
