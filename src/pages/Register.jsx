@@ -1,13 +1,38 @@
 import { useForm } from "react-hook-form"
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import { AuthContext } from "./provider/AuthProvider";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
+    const { userRegistration } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors }, } = useForm()
     const [showPass, setShowPass] = useState(false);
 
-    const onSubmit = (data) => console.log(data)
+    const onSubmit = (data) => {
+        const { name, photoUrl, email, password } = data;
+
+        if (password.length < 6) {
+            toast.error("Password must be at least 6 characters long");
+        }
+        else if (!password.match(/[a-z]/)) {
+            toast.error("Password must contain at least one lowercase letter");
+        }
+        else if (!password.match(/[A-Z]/)) {
+            toast.error("Password must contain at least one uppercase letter");
+        }
+        else {
+            userRegistration(email, password)
+                .then(result => {
+                    console.log(result);
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        }
+    }
 
     return (
         <div className="lg:w-[600px] mx-auto lg:mt-10">
