@@ -1,15 +1,47 @@
 import { useForm } from "react-hook-form"
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "./provider/AuthProvider";
 
 const Login = () => {
+    const { userLogin, googleSignIn, githubSignIn } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors }, } = useForm()
     const [showPass, setShowPass] = useState(false);
 
-    const onSubmit = (data) => console.log(data)
+    const onSubmit = (data) => {
+        const { email, password } = data;
+
+        userLogin(email, password)
+            .then(result => {
+                console.log(result);
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
+    const handleGoogleSignIn = () => {
+        googleSignIn()
+            .then(result => {
+                console.log(result);
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
+    const handleGithubSignIn = () => {
+        githubSignIn()
+            .then(result => {
+                console.log(result);
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
 
     return (
         <div className="lg:w-[600px] mx-auto lg:mt-10">
@@ -41,15 +73,16 @@ const Login = () => {
                 <div className="form-control mt-6">
                     <button className="btn text-white bg-primary hover:bg-primary transition duration-300 ease-in-out">Login</button>
                 </div>
-                <div className=" m-6 space-y-4">
-                    <p className=" text-center">Or Sign In Using</p>
-                    <span className="flex justify-center items-center gap-2">
-                        <FcGoogle size={45} />
-                        <FaGithub size={40} />
-                    </span>
-                </div>
-                <p className=" mt-3 text-center">Do Not Have An Account ? <Link className=" text-red-500" to={'/register'}>Register</Link></p>
             </form>
+            <div className=" m-6 space-y-4">
+                <p className=" text-center">Or Sign In Using</p>
+                <span className="flex justify-center items-center gap-2">
+                    <button onClick={handleGoogleSignIn}><FcGoogle size={45} /></button>
+                    <button onClick={handleGithubSignIn}><FaGithub size={40} /></button>
+                </span>
+            </div>
+            <p className=" mt-3 text-center">Do Not Have An Account ? <Link className=" text-red-500" to={'/register'}>Register</Link></p>
+
         </div>
     );
 };
