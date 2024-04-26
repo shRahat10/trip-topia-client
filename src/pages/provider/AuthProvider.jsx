@@ -1,14 +1,39 @@
 import { createContext } from "react";
 import auth from "../../../firebase.config";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth/cordova";
 
 
 export const AuthContext = createContext(null);
+const googleProvider = new GoogleAuthProvider();
+const githubProvider = new GithubAuthProvider();
 
 const AuthProvider = ({ children }) => {
 
-    const authInfo = {
-
+    const googleSignIn = () => {
+        return signInWithPopup(auth, googleProvider)
     }
+    const githubSignIn = () => {
+        return signInWithPopup(auth, githubProvider)
+    }
+
+    const userRegistration = (email, password) => {
+        return createUserWithEmailAndPassword(auth, email, password)
+    }
+
+    const userLogin = (email, password) => {
+        return signInWithEmailAndPassword(auth, email, password)
+    }
+
+    const userLogout = () => {
+        return signOut(auth)
+    }
+
+
+    const authInfo = {
+        googleSignIn, githubSignIn, userRegistration, userLogin, userLogout, 
+    }
+
     return (
         <AuthContext.Provider value={authInfo}>
             {children}
