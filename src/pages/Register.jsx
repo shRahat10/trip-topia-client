@@ -1,8 +1,6 @@
 import { useForm } from "react-hook-form"
 import { useState } from "react";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
-import { FcGoogle } from "react-icons/fc";
-import { FaGithub } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Register = () => {
