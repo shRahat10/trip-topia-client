@@ -19,11 +19,35 @@ const Navbar = () => {
             }>
                 Home
             </NavLink>
+
+            <NavLink to={"/tourists-spots"} className={({ isActive }) =>
+                isActive
+                    ? " border-b-2 border-primary font-bold text-primary"
+                    : " "
+            }>
+                Tourists Spots
+            </NavLink>
+
+            <NavLink to={"/add-tourists-spots"} className={({ isActive }) =>
+                isActive
+                    ? " border-b-2 border-primary font-bold text-primary"
+                    : " "
+            }>
+                Add Tourists Spots
+            </NavLink>
+            
+            <NavLink to={"/my-lists"} className={({ isActive }) =>
+                isActive
+                    ? " border-b-2 border-primary font-bold text-primary"
+                    : " "
+            }>
+                My Lists
+            </NavLink>
         </>
     );
 
     return (
-        <div className="navbar mb-16 bg-transparent py-4">
+        <div className="navbar mb-16 px-0 bg-transparent py-4">
             {/* dropdown and website title */}
             <div className="navbar-start">
                 <div className="dropdown">
@@ -54,11 +78,14 @@ const Navbar = () => {
             {/* buttons */}
             <div className="navbar-end">
                 {
-                    user 
-                    ? <button onClick={handleUserLogout} className=" bg-primary text-white py-2 px-4 rounded hover:bg-transparent hover:border hover:border-primary hover:text-primary transition duration-300 ease-in-out">Logout</button>
-                    : <Link to={'/login'}><button className=" bg-primary text-white py-2 px-4 rounded hover:bg-transparent hover:border hover:border-primary hover:text-primary transition duration-300 ease-in-out">Login</button></Link>
+                    user
+                        ? <button onClick={handleUserLogout} className=" bg-primary text-white py-2 px-4 rounded hover:bg-transparent hover:outline hover:outline-1 hover:outline-primary hover:text-primary transition duration-300 ease-in-out">Logout</button>
+                        : <span className=" flex gap-2">
+                            <Link to={'/login'}><button className=" bg-primary text-white py-2 px-4 rounded hover:bg-transparent hover:outline hover:outline-1 hover:outline-primary hover:text-primary transition duration-300 ease-in-out">Login</button></Link>
+                            <Link to={'/register'}><button className=" bg-primary text-white py-2 px-4 rounded hover:bg-transparent hover:outline hover:outline-1 hover:outline-primary hover:text-primary transition duration-300 ease-in-out">Register</button></Link>
+                        </span>
                 }
-                
+
             </div>
         </div>
     );
