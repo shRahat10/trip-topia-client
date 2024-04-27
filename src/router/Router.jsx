@@ -8,6 +8,7 @@ import TouristsSpots from "../pages/tourist-spots/TouristsSpots";
 import AddTouristSpot from "../pages/tourist-spots/AddTouristSpot";
 import MyLists from "../pages/tourist-spots/MyLists";
 import TouristsSpotsDetailsPage from "../pages/TouristsSpotsDetailsPage";
+import UpdateTouristsSpots from "../pages/tourist-spots/UpdateTouristsSpots";
 
 const Router = createBrowserRouter ([
     {
@@ -42,6 +43,10 @@ const Router = createBrowserRouter ([
             {
                 path: '/tourists-spots-details-page/:id',
                 element: <TouristsSpotsDetailsPage></TouristsSpotsDetailsPage>,
+            },
+            {
+                path: '/update-tourists-spots/:id',
+                element: <UpdateTouristsSpots></UpdateTouristsSpots>,
             },
         ]
     }

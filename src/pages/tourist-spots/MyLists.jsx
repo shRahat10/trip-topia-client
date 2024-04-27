@@ -26,7 +26,7 @@ const MyLists = () => {
                                 View Details <IoIosArrowDropright size={22} />
                             </Link>
                             <div>
-                                <button className=" p-2"><FaRegEdit size={23} /></button>
+                                <Link to={`/update-tourists-spots/${filterData._id}`}><button className=" p-2"><FaRegEdit size={23} /></button></Link>
                                 <button className=" p-2 text-red-500"><RiDeleteBin2Line teForever size={25} /></button>
                             </div>
                         </div>
