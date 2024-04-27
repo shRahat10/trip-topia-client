@@ -9,6 +9,7 @@ const githubProvider = new GithubAuthProvider();
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     const googleSignIn = () => {
         return signInWithPopup(auth, googleProvider)
@@ -39,7 +40,7 @@ const AuthProvider = ({ children }) => {
     }, [])
 
     const authInfo = {
-        user, googleSignIn, githubSignIn, userRegistration, userLogin, userLogout,
+        user, loading, setLoading, googleSignIn, githubSignIn, userRegistration, userLogin, userLogout,
     }
 
     return (
