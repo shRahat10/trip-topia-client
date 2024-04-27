@@ -22,7 +22,7 @@ const Banner = () => {
                 pagination={{ clickable: true }}
             >
                 {data?.slice(3, 9).map((e, idx) => (
-                    <SwiperSlide key={idx} style={{ backgroundImage: `url(${e.image})`, backgroundSize: 'cover', backgroundPosition: 'center', height: '500px', '@media (min-width: 640px)': { height: '700px' } }}>
+                    <SwiperSlide key={idx} style={{ backgroundImage: `url(${e.image})`, backgroundSize: 'cover', backgroundPosition: 'center', height: '500px', '@media (minWidth: 640px)': { height: '700px' } }}>
                         <div className="absolute inset-0 bg-black opacity-35"></div>
                         <div className="text-white z-10 absolute text-center w-full top-1/3 space-y-6">
                             <h1 className=" text-xl xl:text-2xl font-light">{e.country}</h1>

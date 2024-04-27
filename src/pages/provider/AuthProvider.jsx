@@ -11,7 +11,8 @@ const githubProvider = new GithubAuthProvider();
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [data, setData] = useState(null); console.log(data);
+    const [data, setData] = useState(null);
+    const [dataCountry, setDataCountry] = useState(null);
 
     const googleSignIn = () => {
         return signInWithPopup(auth, googleProvider)
@@ -47,8 +48,14 @@ const AuthProvider = ({ children }) => {
             .then(data => setData(data))
     }, [])
 
+    useEffect(() => {
+        fetch(BASE_URL + '/countries')
+            .then(res => res.json())
+            .then(data => setDataCountry(data))
+    }, [])
+
     const authInfo = {
-        user, loading, data, setLoading, googleSignIn, githubSignIn, userRegistration, userLogin, userLogout,
+        user, loading, data, dataCountry, setLoading, googleSignIn, githubSignIn, userRegistration, userLogin, userLogout,
     }
 
     return (

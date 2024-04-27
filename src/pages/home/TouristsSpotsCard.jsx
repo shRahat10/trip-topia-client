@@ -21,7 +21,7 @@ const TouristsSpotsCard = () => {
             </div>
             <div className=" w-full flex justify-center">
                 {
-                    data.length > 6 && (
+                    data?.length > 6 && (
                         <button className=" text-primary border border-primary py-2 px-4 rounded">Show More</button>
                     )
                 }
