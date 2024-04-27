@@ -14,7 +14,7 @@ const MyLists = () => {
         <div className="grid grid-cols-1 gap-6">
             {filterData?.map((e, idx) => (
                 <div key={idx} className="grid grid-cols-1 lg:grid-cols-3 gap-2 bg-white rounded-lg overflow-hidden shadow-lg">
-                    <img className="h-60 w-full object-cover object-center rounded-lg" src={e.image} alt="loading image..." />
+                    <img className="h-full w-full object-cover object-center rounded-lg" src={e.image} alt="loading image..." />
                     <div className="p-4 lg:col-span-2 flex flex-col justify-between">
                         <div>
                             <p className="text-xl font-semibold text-gray-800">{e.spot}</p>
