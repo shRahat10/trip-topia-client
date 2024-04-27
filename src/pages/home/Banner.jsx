@@ -9,7 +9,7 @@ import 'swiper/css/autoplay';
 import { Link } from "react-router-dom";
 
 const Banner = () => {
-    const { user, data } = useContext(AuthContext);
+    const { data } = useContext(AuthContext);
 
     return (
         <div className="">
@@ -27,7 +27,7 @@ const Banner = () => {
                         <div className="text-white z-10 absolute text-center w-full top-1/3 space-y-6">
                             <h1 className=" text-xl xl:text-2xl font-light">{e.country}</h1>
                             <p className=" text-3xl lg:text-6xl xl:text-7xl">{e.spot}</p>
-                            <button className=" text-sm border-2 border-primary rounded-full py-2 px-4">View Details</button>
+                            <Link to={`/tourists-spots-details-page/${e._id}`}><button className=" mt-6 text-sm border-2 border-primary rounded-full py-2 px-4">View Details</button></Link>
                         </div>
                     </SwiperSlide>
                 ))}
