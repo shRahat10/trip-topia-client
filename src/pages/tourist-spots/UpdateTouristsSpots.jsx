@@ -9,32 +9,32 @@ import Swal from "sweetalert2";
 const UpdateTouristsSpots = () => {
     const { id } = useParams();
     const { data } = useContext(AuthContext);
-    const filterData = data?.find((e) => e._id === id); console.log(id);
+    const filterData = data?.find((e) => e._id === id);
     const { register, handleSubmit, } = useForm();
 
     const onSubmit = (data) => {
         // const { image, spot, country, location, cost, seasonality, time, visitors, description, email, name } = data;
         console.log(data);
 
-        // fetch(BASE_URL + '/tourists-spots', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
+        fetch(BASE_URL + `/tourists-spots/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
 
-        //     body: JSON.stringify(data)
-        // })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         if (data.insertedId) {
-        //             Swal.fire({
-        //                 title: 'Success!',
-        //                 text: 'Added Successfully',
-        //                 icon: 'success',
-        //                 confirmButtonText: 'Ok'
-        //             })
-        //         }
-        //     })
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Updated Successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Ok'
+                    })
+                }
+            })
     }
 
     return (
