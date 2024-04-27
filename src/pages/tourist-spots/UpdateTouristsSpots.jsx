@@ -8,8 +8,8 @@ import Swal from "sweetalert2";
 
 const UpdateTouristsSpots = () => {
     const { id } = useParams();
-    const { data, user } = useContext(AuthContext);
-    const filterData = data?.find((e) => e.email === user?.email);
+    const { data } = useContext(AuthContext);
+    const filterData = data?.find((e) => e._id === id); console.log(id);
     const { register, handleSubmit, } = useForm();
 
     const onSubmit = (data) => {
@@ -127,7 +127,7 @@ const UpdateTouristsSpots = () => {
                             <span className="label-text">User Name</span>
                         </label>
                         <label className="input-group">
-                            <input readOnly type="text" name="name" defaultValue={filterData?.name}  placeholder="User Name" {...register("name", { required: true })} className="input border border-gray-300 focus:outline-none focus:border-primary w-full" />
+                            <input readOnly type="text" name="name" defaultValue={filterData?.name} placeholder="User Name" {...register("name", { required: true })} className="input border border-gray-300 focus:outline-none focus:border-primary w-full" />
                         </label>
                     </div>
                 </div>

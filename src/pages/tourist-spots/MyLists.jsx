@@ -8,7 +8,7 @@ import { RiDeleteBin2Line } from "react-icons/ri";
 
 const MyLists = () => {
     const { data, user } = useContext(AuthContext);
-    const filterData = data?.filter((e) => e.email === user?.email)
+    const filterData = data?.filter((e) => e.email === user?.email);
 
     return (
         <div className="grid grid-cols-1 gap-6">
@@ -26,7 +26,7 @@ const MyLists = () => {
                                 View Details <IoIosArrowDropright size={22} />
                             </Link>
                             <div>
-                                <Link to={`/update-tourists-spots/${filterData._id}`}><button className=" p-2"><FaRegEdit size={23} /></button></Link>
+                                <Link to={`/update-tourists-spots/${e._id}`}><button className=" p-2"><FaRegEdit size={23} /></button></Link>
                                 <button className=" p-2 text-red-500"><RiDeleteBin2Line teForever size={25} /></button>
                             </div>
                         </div>
