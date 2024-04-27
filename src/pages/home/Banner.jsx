@@ -26,7 +26,7 @@ const Banner = () => {
                         <div className="absolute inset-0 bg-black opacity-35"></div>
                         <div className="text-white z-10 absolute text-center w-full top-1/3 space-y-6">
                             <h1 className=" text-xl xl:text-2xl font-light">{e.country}</h1>
-                            <p className=" text-6xl xl:text-7xl">{e.spot}</p>
+                            <p className=" text-3xl lg:text-6xl xl:text-7xl">{e.spot}</p>
                             <button className=" text-sm border-2 border-primary rounded-full py-2 px-4">View Details</button>
                         </div>
                     </SwiperSlide>

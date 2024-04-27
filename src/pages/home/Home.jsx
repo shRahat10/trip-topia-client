@@ -4,7 +4,7 @@ import TouristsSpotsCard from "./TouristsSpotsCard";
 
 const Home = () => {
     return (
-        <div>
+        <div className=" space-y-10">
             <Banner></Banner>
             <TouristsSpotsCard></TouristsSpotsCard>
         </div>

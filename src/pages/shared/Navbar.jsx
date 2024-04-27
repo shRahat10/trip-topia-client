@@ -63,7 +63,7 @@ const Navbar = () => {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
                         </svg>
                     </div>
-                    <ul className={`menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow-sm bg-base-100 rounded w-40 ${isOpen ? "translate-x-0" : "-translate-x-96"
+                    <ul className={`menu menu-sm dropdown-content mt-3 z-[50] p-2 shadow-sm bg-base-100 rounded w-40 ${isOpen ? "translate-x-0" : "-translate-x-96"
                         } transition-transform duration-300 ease-in-out`}>
                         {links}
                     </ul>

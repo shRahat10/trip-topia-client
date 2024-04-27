@@ -7,7 +7,7 @@ const TouristsSpotsCard = () => {
 
     return (
         <>
-            <div className=" grid grid-cols-3 gap-3">
+            <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                 {
                     data?.slice(0, 6).map((e, idx) => (
                         <div key={idx} className=" space-y-3 shadow border p-4 rounded">
@@ -22,7 +22,7 @@ const TouristsSpotsCard = () => {
             <div className=" w-full flex justify-center">
                 {
                     data.length > 6 && (
-                        <button className=" mt-10 text-primary border border-primary py-2 px-4 rounded">Show More</button>
+                        <button className=" text-primary border border-primary py-2 px-4 rounded">Show More</button>
                     )
                 }
             </div>
