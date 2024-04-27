@@ -15,7 +15,7 @@ const TouristsSpotsDetailsPage = () => {
             {details ? (
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center justify-center">
                     <img src={details.image} alt={details.spot} className=" rounded-md w-full h-80 object-cover mr-8" />
-                    <div className=" flex flex-col space-y-4">
+                    <div className=" flex flex-col lg:space-y-2 xl:space-y-4">
                         <div>
                             <h2 className="text-2xl font-bold">{details.spot}</h2>
                             <p>{details.location}, {details.country}</p>
