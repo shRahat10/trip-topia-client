@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { IoIosArrowDropright } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 
 const TouristsSpots = () => {
@@ -48,9 +49,10 @@ const TouristsSpots = () => {
                                     <p className="text-gray-700">Travel Time: {e.time} days</p>
                                     <p className="text-gray-700">Seasonality: {e.seasonality}</p>
                                 </div>
-                                <button className="text-white bg-primary hover:bg-primary-dark font-semibold py-2 px-4 rounded flex items-center gap-1">
+                                <Link to={`/tourists-spots-details-page/${e._id}`}>
+                                <button className="mt-4 text-white bg-primary hover:bg-primary-dark font-semibold py-2 px-4 rounded flex items-center gap-1">
                                     View Details <IoIosArrowDropright size={22} />
-                                </button>
+                                </button></Link>
                             </div>
                         </div>
                     ))

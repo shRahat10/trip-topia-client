@@ -15,7 +15,7 @@ const TouristsSpotsCard = () => {
                             <img className=" h-40 w-full object-cover object-center" src={e.image} alt="loading image..." />
                             <p className=" text-2xl font-semibold">{e.spot}</p>
                             <p className=" h-24 overflow-hidden">{e.description}</p>
-                            <button className=" text-primary font-semibold flex items-center gap-1">View Details <IoIosArrowDropright size={22} /></button>
+                            <Link to={`/tourists-spots-details-page/${e._id}`}><button className=" text-primary font-semibold flex items-center gap-1">View Details <IoIosArrowDropright size={22} /></button></Link>
                         </div>
                     ))
                 }

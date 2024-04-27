@@ -7,6 +7,7 @@ import Register from "../pages/Register";
 import TouristsSpots from "../pages/tourist-spots/TouristsSpots";
 import AddTouristSpot from "../pages/tourist-spots/AddTouristSpot";
 import MyLists from "../pages/tourist-spots/MyLists";
+import TouristsSpotsDetailsPage from "../pages/TouristsSpotsDetailsPage";
 
 const Router = createBrowserRouter ([
     {
@@ -37,6 +38,10 @@ const Router = createBrowserRouter ([
             {
                 path: '/my-lists',
                 element: <MyLists></MyLists>,
+            },
+            {
+                path: '/tourists-spots-details-page/:id',
+                element: <TouristsSpotsDetailsPage></TouristsSpotsDetailsPage>,
             },
         ]
     }
