@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import Swal from 'sweetalert2';
 import { AuthContext } from "../provider/AuthProvider";
+import { BASE_URL } from "../../constent/constent";
 
 
 const AddTouristSpot = () => {
@@ -12,7 +13,7 @@ const AddTouristSpot = () => {
         // const { image, spot, country, location, cost, seasonality, time, visitors, description, email, name } = data;
         console.log(data);
 
-        fetch('http://localhost:5000/tourists-spots', {
+        fetch(BASE_URL + '/tourists-spots', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -44,6 +45,7 @@ const AddTouristSpot = () => {
                         <label className="input-group">
                             <input type="text" name="image" placeholder="Image Url" {...register("image", { required: true })} className="input border border-gray-300 focus:outline-none focus:border-primary w-full" />
                         </label>
+                        {errors.image && <span className=" text-red-500">This field is required</span>}
                     </div>
                     <div className="form-control ">
                         <label className="label">
@@ -52,6 +54,7 @@ const AddTouristSpot = () => {
                         <label className="input-group">
                             <input type="text" name="spot" placeholder="Tourists Spot Name" {...register("spot", { required: true })} className="input border border-gray-300 focus:outline-none focus:border-primary w-full" />
                         </label>
+                        {errors.spot && <span className=" text-red-500">This field is required</span>}
                     </div>
                     <div className="form-control ">
                         <label className="label">
@@ -60,6 +63,7 @@ const AddTouristSpot = () => {
                         <label className="input-group">
                             <input type="text" name="country" placeholder="Country Name" {...register("country", { required: true })} className="input border border-gray-300 focus:outline-none focus:border-primary w-full" />
                         </label>
+                        {errors.country && <span className=" text-red-500">This field is required</span>}
                     </div>
                     <div className="form-control ">
                         <label className="label">
@@ -68,6 +72,7 @@ const AddTouristSpot = () => {
                         <label className="input-group">
                             <input type="text" name="location" placeholder="Location" {...register("location", { required: true })} className="input border border-gray-300 focus:outline-none focus:border-primary w-full" />
                         </label>
+                        {errors.location && <span className=" text-red-500">This field is required</span>}
                     </div>
                     <div className="form-control ">
                         <label className="label">
@@ -76,6 +81,7 @@ const AddTouristSpot = () => {
                         <label className="input-group">
                             <input type="text" name="cost" placeholder="Average Cost" {...register("cost", { required: true })} className="input border border-gray-300 focus:outline-none focus:border-primary w-full" />
                         </label>
+                        {errors.cost && <span className=" text-red-500">This field is required</span>}
                     </div>
                     <div className="form-control ">
                         <label className="label">
@@ -84,6 +90,7 @@ const AddTouristSpot = () => {
                         <label className="input-group">
                             <input type="text" name="seasonality" placeholder="Seasonality" {...register("seasonality", { required: true })} className="input border border-gray-300 focus:outline-none focus:border-primary w-full" />
                         </label>
+                        {errors.seasonality && <span className=" text-red-500">This field is required</span>}
                     </div>
                     <div className="form-control ">
                         <label className="label">
@@ -92,6 +99,7 @@ const AddTouristSpot = () => {
                         <label className="input-group">
                             <input type="text" name="time" placeholder="Travel Time" {...register("time", { required: true })} className="input border border-gray-300 focus:outline-none focus:border-primary w-full" />
                         </label>
+                        {errors.time && <span className=" text-red-500">This field is required</span>}
                     </div>
                     <div className="form-control ">
                         <label className="label">
@@ -100,6 +108,7 @@ const AddTouristSpot = () => {
                         <label className="input-group">
                             <input type="text" name="visitors" placeholder="Total Visitors Per Year" {...register("visitors", { required: true })} className="input border border-gray-300 focus:outline-none focus:border-primary w-full" />
                         </label>
+                        {errors.visitors && <span className=" text-red-500">This field is required</span>}
                     </div>
                     <div className="form-control col-span-2">
                         <label className="label">
@@ -108,6 +117,7 @@ const AddTouristSpot = () => {
                         <div className="input-group">
                             <textarea name="description" placeholder="Short Description" {...register("description", { required: true })} className="pt-3 h-20 input border border-gray-300 focus:outline-none focus:border-primary w-full"></textarea>
                         </div>
+                        {errors.description && <span className=" text-red-500">This field is required</span>}
                     </div>
                     <div className="form-control ">
                         <label className="label">
