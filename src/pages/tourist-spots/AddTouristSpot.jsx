@@ -1,10 +1,13 @@
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import Swal from 'sweetalert2';
+import { AuthContext } from "../provider/AuthProvider";
 
 
 const AddTouristSpot = () => {
+    const { user } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors }, } = useForm()
-
+    
     const onSubmit = (data) => {
         // const { image, spot, country, location, cost, seasonality, time, visitors, description, email, name } = data;
         console.log(data);
@@ -111,7 +114,7 @@ const AddTouristSpot = () => {
                             <span className="label-text">User Email</span>
                         </label>
                         <label className="input-group">
-                            <input type="text" name="email" placeholder="User Email" {...register("email", { required: true })} className="input border border-gray-300 focus:outline-none focus:border-primary w-full" />
+                            <input readOnly type="text" name="email" defaultValue={user? user.email : ''} placeholder="User Email" {...register("email", { required: true })} className="input border border-gray-300 focus:outline-none focus:border-primary w-full" />
                         </label>
                     </div>
                     <div className="form-control ">
@@ -119,7 +122,7 @@ const AddTouristSpot = () => {
                             <span className="label-text">User Name</span>
                         </label>
                         <label className="input-group">
-                            <input type="text" name="name" placeholder="User Name" {...register("name", { required: true })} className="input border border-gray-300 focus:outline-none focus:border-primary w-full" />
+                            <input readOnly type="text" name="name" defaultValue={user? user.displayName : ''}  placeholder="User Name" {...register("name", { required: true })} className="input border border-gray-300 focus:outline-none focus:border-primary w-full" />
                         </label>
                     </div>
                 </div>
