@@ -32,9 +32,9 @@ const Footer = () => {
                     <p>01600******</p>
                 </div>
                 <div className=" space-y-2 justify-self-end">
-                    <p className="text-lg font-bold">Join Our Community</p>
-                    <p>Explore, connect, and share your travel experiences with us!</p>
-                    <Link to={'/register'}><button className=" mt-2 bg-primary px-4 py-1 font-semibold rounded-full">Join Now</button></Link>
+                    <p className="text-lg font-bold">Discover the Wonders</p>
+                    <p>Every destination has a story to tell. Open your heart to new experiences and let the journey unfold.</p>
+                    <Link to={'/register'}><button className=" mt-2 bg-primary px-4 py-1 font-semibold rounded-md">Join Now</button></Link>
                 </div>
             </div>
             <hr />
