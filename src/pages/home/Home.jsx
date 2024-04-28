@@ -1,5 +1,6 @@
 import Banner from "./Banner";
 import CountriesCard from "./CountriesCard";
+import Team from "./Team";
 import TouristsSpotsCard from "./TouristsSpotsCard";
 
 
@@ -9,6 +10,7 @@ const Home = () => {
             <Banner></Banner>
             <TouristsSpotsCard></TouristsSpotsCard>
             <CountriesCard></CountriesCard>
+            <Team></Team>
         </div>
     );
 };
