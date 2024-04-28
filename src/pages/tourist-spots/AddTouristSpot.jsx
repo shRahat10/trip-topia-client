@@ -35,7 +35,7 @@ const AddTouristSpot = () => {
     }
 
     return (
-        <div>
+        <div className=" border rounded-lg shadow p-10">
             <h1 className=" text-center mb-4 text-3xl">Add Tourists Spot</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className=" grid grid-cols-2 gap-10">
