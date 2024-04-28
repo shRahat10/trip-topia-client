@@ -18,7 +18,7 @@ const Error = () => {
                     <p className="text-lg text-gray-700">Oops! It looks like the page you are looking for does not exist.</p>
                     <p className="text-lg text-gray-700">Do not worry, you can navigate back to the home page using the button below.</p>
                 </div>
-                <Link to={"/"}><button className="flex gap-2 items-center bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg">
+                <Link to={"/"}><button className="flex gap-2 items-center bg-primary hover:bg-white hover:border hover:border-primary hover:text-primary text-white font-bold py-2 px-4 rounded-lg">
                     <GoArrowLeft />
                     Back to Home
                 </button></Link>
