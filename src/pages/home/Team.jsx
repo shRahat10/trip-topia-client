@@ -1,8 +1,7 @@
 import team1 from "../../assets/images/team1.jpg"
 import team2 from "../../assets/images/team2.jpg"
 import team3 from "../../assets/images/team3.jpg"
-import { Cursor, Typewriter, useTypewriter } from 'react-simple-typewriter'
-import { Fade } from "react-awesome-reveal";
+import { Cursor, useTypewriter } from 'react-simple-typewriter'
 import { useState } from "react";
 
 const Team = () => {

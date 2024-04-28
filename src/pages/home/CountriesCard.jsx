@@ -1,12 +1,22 @@
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
+import { Cursor, useTypewriter } from 'react-simple-typewriter'
 
 
 const CountriesCard = () => {
     const { dataCountry } = useContext(AuthContext);
+    const [head] = useTypewriter({
+        words: ['Country'],
+        loop: true,
+        onLoopDone: () => console.log(`loop completed`)
+    })
 
     return (
-        <>
+        <div>
+            <div className='App text-center mb-3'>
+                <span className="text-3xl font-semibold">{head}</span>
+                <Cursor cursorColor='red' />
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {
                     dataCountry?.map((e, idx) => (
@@ -20,12 +30,7 @@ const CountriesCard = () => {
                     ))
                 }
             </div>
-            <div className="w-full flex justify-center mt-4">
-                {dataCountry?.length > 6 && (
-                    <button className="bg-primary text-white py-2 px-4 rounded hover:bg-primary-dark transition duration-300">Show More</button>
-                )}
-            </div>
-        </>
+        </div>
     );
 };
 
