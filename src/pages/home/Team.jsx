@@ -23,11 +23,11 @@ const Team = () => {
                 <span className="text-3xl font-semibold">{head}</span>
                 <Cursor cursorColor='red' />
             </div>
-            <div className='App text-center h-20'>
+            <div className='App text-center md:h-20 mb-6'>
                 <span>{text}</span>
                 {isTyping && <Cursor cursorColor='red' />}
             </div>
-            <div className=" flex flex-wrap justify-between">
+            <div className=" flex flex-wrap gap-10  justify-center">
                 <div className=" bg-white w-56 p-6 border rounded shadow-md text-center space-y-2">
                     <img className=" border-2 border-primary rounded-full" src={team1} alt="" />
                     <h1 className=" text-xl font-bold">John Doe</h1>

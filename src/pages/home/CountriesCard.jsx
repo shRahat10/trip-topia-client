@@ -6,14 +6,14 @@ import { Cursor, useTypewriter } from 'react-simple-typewriter'
 const CountriesCard = () => {
     const { dataCountry } = useContext(AuthContext);
     const [head] = useTypewriter({
-        words: ['Country'],
+        words: ['Southeast Asian Countries'],
         loop: true,
         onLoopDone: () => console.log(`loop completed`)
     })
 
     return (
         <div>
-            <div className='App text-center mb-3'>
+            <div className='App text-center mb-6'>
                 <span className="text-3xl font-semibold">{head}</span>
                 <Cursor cursorColor='red' />
             </div>
