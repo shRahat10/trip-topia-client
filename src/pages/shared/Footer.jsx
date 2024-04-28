@@ -2,8 +2,12 @@ import { FiFacebook } from "react-icons/fi";
 import { FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../provider/AuthProvider";
 
 const Footer = () => {
+    const { user } = useContext(AuthContext);
+
     return (
         <div className=" text-white bg-transparent py-6 mt-16">
             <div className=" flex justify-between items-center mb-6">
@@ -34,7 +38,7 @@ const Footer = () => {
                 <div className=" space-y-2 justify-self-end">
                     <p className="text-lg font-bold">Discover the Wonders</p>
                     <p>Every destination has a story to tell. Open your heart to new experiences and let the journey unfold.</p>
-                    <Link to={'/register'}><button className=" mt-2 bg-primary px-4 py-1 font-semibold rounded-md">Join Now</button></Link>
+                    {!user && <Link to={'/register'}><button className=" mt-2 bg-primary px-4 py-1 font-semibold rounded-md">Join Now</button></Link>}
                 </div>
             </div>
             <hr />
