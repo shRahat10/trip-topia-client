@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form"
 import { useContext, useState } from "react";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { AuthContext } from "./provider/AuthProvider";
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
@@ -13,6 +13,7 @@ const Register = () => {
     const { register, handleSubmit, formState: { errors }, } = useForm()
     const [showPass, setShowPass] = useState(false);
     const [errorMessage, setErrorMessage] = useState(null);
+    const location = useLocation();
     const navigate = useNavigate();
 
     const onSubmit = (data) => {
@@ -47,7 +48,7 @@ const Register = () => {
                                 confirmButtonText: "Let's get started!"
                             })
                             .then(() => {
-                                navigate("/");
+                                navigate(location?.state ? location.state : "/");
                             });
                         })
                 })
