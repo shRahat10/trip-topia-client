@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import auth from "../../../firebase.config";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, signOut, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, signOut, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, updateProfile } from "firebase/auth";
 import { BASE_URL } from "../../constent/constent";
 
 
@@ -15,17 +15,21 @@ const AuthProvider = ({ children }) => {
     const [dataCountry, setDataCountry] = useState(null);
 
     const googleSignIn = () => {
+        setLoading(true);
         return signInWithPopup(auth, googleProvider)
     }
     const githubSignIn = () => {
+        setLoading(true);
         return signInWithPopup(auth, githubProvider)
     }
 
     const userRegistration = (email, password) => {
+        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
     const userLogin = (email, password) => {
+        setLoading(true);
         return signInWithEmailAndPassword(auth, email, password)
     }
 
@@ -33,18 +37,36 @@ const AuthProvider = ({ children }) => {
         return signOut(auth)
     }
 
+    const updateUserProfile = (name, photoUrl) => {
+        setLoading(true);
+        return updateProfile(auth.currentUser, {
+            displayName: name,
+            photoURL: photoUrl
+        }).then(() => {
+            setUser(currentUser => ({
+                ...currentUser,
+                displayName: name,
+                photoURL: photoUrl,
+                email: auth.currentUser.email,
+            }));
+        }).catch(error => {
+            console.log("Error updating profile: ", error);
+        });
+    }
+
     const handleUpdateData = id => {
-        setData((prev)=> prev?.filter(e => e?._id !== id))
+        setData((prev) => prev?.filter(e => e?._id !== id))
     }
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-            setUser(currentUser)
-        })
+            setUser(currentUser);
+            setLoading(false);
+        });
         return () => {
             unSubscribe();
-        }
-    }, [])
+        };
+    }, []);
 
     useEffect(() => {
         fetch(BASE_URL + '/tourists-spots')
@@ -59,7 +81,7 @@ const AuthProvider = ({ children }) => {
     }, [])
 
     const authInfo = {
-        user, loading, data, setData, handleUpdateData, dataCountry, setLoading, googleSignIn, githubSignIn, userRegistration, userLogin, userLogout,
+        user, loading, data, setData, handleUpdateData, updateUserProfile, dataCountry, setLoading, googleSignIn, githubSignIn, userRegistration, userLogin, userLogout,
     }
 
     return (

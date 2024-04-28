@@ -52,15 +52,6 @@ const Navbar = () => {
             >
                 My Lists
             </NavLink>
-
-            <NavLink to={"/profile"} className={({ isActive }) =>
-                isActive
-                    ? "border-b-2 border-primary font-bold text-primary"
-                    : " "
-            }
-            >
-                Profile
-            </NavLink>
         </>
     );
 

@@ -9,7 +9,7 @@ import withReactContent from 'sweetalert2-react-content'
 const MySwal = withReactContent(Swal)
 
 const Register = () => {
-    const { userRegistration } = useContext(AuthContext);
+    const { userRegistration, updateUserProfile } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors }, } = useForm()
     const [showPass, setShowPass] = useState(false);
     const [errorMessage, setErrorMessage] = useState(null);
@@ -30,22 +30,27 @@ const Register = () => {
             userRegistration(email, password)
                 .then(result => {
                     console.log(result);
-                    MySwal.fire({
-                        title: <p className="text-3xl font-bold text-blue-900 mb-4">Welcome aboard!</p>,
-                        html: (
-                            <div className="text-lg text-footer">
-                                <p>You have successfully registered.</p>
-                                <p>Thank you for registering. You are now a part of our community!</p>
-                            </div>
-                        ),
-                        icon: "success",
-                        confirmButtonColor: 'primary',
-                        confirmButtonText: "Let's get started!"
-                    })
+                    updateUserProfile(name, photoUrl)
+                        .then(result => {
+                            console.log(result);
+                            MySwal.fire({
+                                title: <p className="text-3xl font-bold text-blue-900 mb-4">Welcome aboard!</p>,
+                                html: (
+                                    <div className="text-lg text-footer">
+                                        <p>You have successfully registered.</p>
+                                        <p>Thank you for registering. You are now a part of our community!</p>
+                                    </div>
+                                ),
+                                icon: "success",
+                                confirmButtonColor: 'primary',
+                                confirmButtonText: "Let's get started!"
+                            })
+                        })
                 })
                 .catch(error => {
                     console.log(error);
                 })
+
         }
     }
 
