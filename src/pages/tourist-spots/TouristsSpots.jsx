@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { IoIosArrowDropright } from "react-icons/io";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 
 const TouristsSpots = () => {
@@ -26,7 +27,10 @@ const TouristsSpots = () => {
     }) : [];
 
     return (
-        <>
+        <div>
+            <Helmet>
+                <title>Trip Topia | Tourists Spots</title>
+            </Helmet>
             <div className="flex justify-start items-center gap-3 mb-4 mr-4">
                 <p>Cost Filter: </p>
                 <select onChange={toggleSortOrder} className="border border-gray-400 rounded px-2 py-1 focus:outline-primary">
@@ -50,9 +54,9 @@ const TouristsSpots = () => {
                                     <p className="text-gray-700"><span className=" font-bold">Seasonality:</span> {e.seasonality}</p>
                                 </div>
                                 <Link to={`/tourists-spots-details-page/${e._id}`}>
-                                <button className="mt-4 text-white bg-primary hover:bg-primary-dark font-semibold py-2 px-4 rounded flex items-center gap-1">
-                                    View Details <IoIosArrowDropright size={22} />
-                                </button></Link>
+                                    <button className="mt-4 text-white bg-primary hover:bg-primary-dark font-semibold py-2 px-4 rounded flex items-center gap-1">
+                                        View Details <IoIosArrowDropright size={22} />
+                                    </button></Link>
                             </div>
                         </div>
                     ))
@@ -66,7 +70,7 @@ const TouristsSpots = () => {
                 }
             </div>
 
-        </>
+        </div>
     );
 };
 

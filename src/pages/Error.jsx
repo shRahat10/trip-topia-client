@@ -2,6 +2,7 @@ import { useLottie } from "lottie-react";
 import error_lottie from "../assets/lottie/error_lottie.json";
 import { Link } from "react-router-dom";
 import { GoArrowLeft } from "react-icons/go";
+import { Helmet } from "react-helmet-async";
 
 const Error = () => {
     const options = {
@@ -11,7 +12,10 @@ const Error = () => {
     };
     const { View } = useLottie(options);
     return (
-        <>
+        <div>
+            <Helmet>
+                <title>Trip Topia | Error</title>
+            </Helmet>
             <div className="flex flex-col justify-center items-center space-y-5 mt-20">
                 {View}
                 <div className="text-center ">
@@ -23,7 +27,7 @@ const Error = () => {
                     Back to Home
                 </button></Link>
             </div>
-        </>
+        </div>
     );
 };
 

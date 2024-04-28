@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "./provider/AuthProvider";
 import { useParams } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 
 const TouristsSpotsDetailsPage = () => {
@@ -12,6 +13,9 @@ const TouristsSpotsDetailsPage = () => {
 
     return (
         <div className="container mx-auto px-4 py-8">
+        <Helmet>
+            <title>Trip Topia | Spot Details</title>
+        </Helmet>
             {details ? (
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center justify-center">
                     <img src={details.image} alt={details.spot} className=" rounded-md w-full h-80 object-cover mr-8" />

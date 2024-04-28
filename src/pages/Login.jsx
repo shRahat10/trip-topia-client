@@ -7,6 +7,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { AuthContext } from "./provider/AuthProvider";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
     const { userLogin, googleSignIn, githubSignIn } = useContext(AuthContext);
@@ -53,6 +54,9 @@ const Login = () => {
 
     return (
         <div className="md:w-[600px] mx-auto lg:mt-10">
+        <Helmet>
+            <title>Trip Topia | Login</title>
+        </Helmet>
             <form onSubmit={handleSubmit(onSubmit)} className=" space-y-6">
                 <div className="form-control">
                     <label className="label">

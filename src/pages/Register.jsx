@@ -5,6 +5,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { AuthContext } from "./provider/AuthProvider";
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import { Helmet } from "react-helmet-async";
 
 const MySwal = withReactContent(Swal)
 
@@ -61,6 +62,9 @@ const Register = () => {
 
     return (
         <div className="md:w-[600px] mx-auto lg:mt-10">
+        <Helmet>
+            <title>Trip Topia | Register</title>
+        </Helmet>
             <form onSubmit={handleSubmit(onSubmit)} className=" space-y-6">
                 <div className="form-control">
                     <label className="label">

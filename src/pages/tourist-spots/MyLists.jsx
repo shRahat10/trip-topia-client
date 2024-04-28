@@ -7,6 +7,7 @@ import { RiDeleteBin2Line } from "react-icons/ri";
 import Swal from "sweetalert2";
 import { BASE_URL } from "../../constent/constent";
 import userIcon from "../../assets/images/userIcon.webp"
+import { Helmet } from "react-helmet-async";
 
 
 const MyLists = () => {
@@ -82,6 +83,9 @@ const MyLists = () => {
 
     return (
         <div>
+        <Helmet>
+            <title>Trip Topia | My Lists</title>
+        </Helmet>
             <div className="relative w-fit mx-auto mb-20 text-center">
                 <img className="w-36 h-36 rounded-full object-center object-cover mx-auto mb-4" src={user.photoURL ? user.photoURL : userIcon} alt="" />
                 <h1 className="text-xl font-bold text-gray-700">{user.displayName}</h1>

@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { BASE_URL } from "../../constent/constent";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 
 const UpdateTouristsSpots = () => {
@@ -39,6 +40,9 @@ const UpdateTouristsSpots = () => {
 
     return (
         <div className="border rounded-lg shadow p-10">
+        <Helmet>
+            <title>Trip Topia | Update Tourist Spot</title>
+        </Helmet>
             <h1 className=" text-center mb-4 text-3xl">Update Tourists Spot</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className=" grid grid-cols-2 gap-10">

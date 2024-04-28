@@ -3,12 +3,13 @@ import { useForm } from "react-hook-form";
 import Swal from 'sweetalert2';
 import { AuthContext } from "../provider/AuthProvider";
 import { BASE_URL } from "../../constent/constent";
+import { Helmet } from "react-helmet-async";
 
 
 const AddTouristSpot = () => {
     const { user } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors }, } = useForm()
-    
+
     const onSubmit = (data) => {
         // const { image, spot, country, location, cost, seasonality, time, visitors, description, email, name } = data;
         console.log(data);
@@ -36,6 +37,9 @@ const AddTouristSpot = () => {
 
     return (
         <div className=" border rounded-lg shadow p-10">
+            <Helmet>
+                <title>Trip Topia | Add Spot</title>
+            </Helmet>
             <h1 className=" text-center mb-4 text-3xl">Add Tourists Spot</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className=" grid grid-cols-2 gap-10">
@@ -125,7 +129,7 @@ const AddTouristSpot = () => {
                             <span className="label-text">User Email</span>
                         </label>
                         <label className="input-group">
-                            <input readOnly type="text" name="email" defaultValue={user? user.email : ''} placeholder="User Email" {...register("email", { required: true })} className="input border border-gray-300 focus:outline-none focus:border-primary w-full" />
+                            <input readOnly type="text" name="email" defaultValue={user ? user.email : ''} placeholder="User Email" {...register("email", { required: true })} className="input border border-gray-300 focus:outline-none focus:border-primary w-full" />
                         </label>
                     </div>
                     <div className="form-control ">
@@ -133,7 +137,7 @@ const AddTouristSpot = () => {
                             <span className="label-text">User Name</span>
                         </label>
                         <label className="input-group">
-                            <input readOnly type="text" name="name" defaultValue={user? user.displayName : ''}  placeholder="User Name" {...register("name", { required: true })} className="input border border-gray-300 focus:outline-none focus:border-primary w-full" />
+                            <input readOnly type="text" name="name" defaultValue={user ? user.displayName : ''} placeholder="User Name" {...register("name", { required: true })} className="input border border-gray-300 focus:outline-none focus:border-primary w-full" />
                         </label>
                     </div>
                 </div>
