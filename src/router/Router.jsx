@@ -36,7 +36,7 @@ const Router = createBrowserRouter ([
             },
             {
                 path: '/add-tourists-spots',
-                element: <AddTouristSpot></AddTouristSpot>,
+                element: <PrivateRouter><AddTouristSpot></AddTouristSpot></PrivateRouter>,
             },
             {
                 path: '/my-lists',
@@ -44,11 +44,11 @@ const Router = createBrowserRouter ([
             },
             {
                 path: '/tourists-spots-details-page/:id',
-                element: <TouristsSpotsDetailsPage></TouristsSpotsDetailsPage>,
+                element: <PrivateRouter><TouristsSpotsDetailsPage></TouristsSpotsDetailsPage></PrivateRouter>,
             },
             {
                 path: '/update-tourists-spots/:id',
-                element: <UpdateTouristsSpots></UpdateTouristsSpots>,
+                element: <PrivateRouter><UpdateTouristsSpots></UpdateTouristsSpots></PrivateRouter>,
             },
             {
                 path: '/country-spots/:country',

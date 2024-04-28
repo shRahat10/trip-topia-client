@@ -4,7 +4,7 @@ import { AuthContext } from "../provider/AuthProvider";
 import userIcon from "../../assets/images/userIcon.webp"
 
 const Navbar = () => {
-    const { user, userLogout } = useContext(AuthContext);
+    const { user, userLogout, loading } = useContext(AuthContext);
     const [isOpen, setIsOpen] = useState(false);
 
     const handleUserLogout = () => {
@@ -44,14 +44,16 @@ const Navbar = () => {
                 Add Spot
             </NavLink>
 
-            <NavLink to={"/my-lists"} className={({ isActive }) =>
-                isActive
-                    ? "border-b-2 border-primary font-bold text-primary"
-                    : " "
+            {
+                user && <NavLink to={"/my-lists"} className={({ isActive }) =>
+                    isActive
+                        ? "border-b-2 border-primary font-bold text-primary"
+                        : " "
+                }
+                >
+                    My Lists
+                </NavLink>
             }
-            >
-                My Lists
-            </NavLink>
         </>
     );
 
@@ -82,7 +84,11 @@ const Navbar = () => {
 
             <div className="navbar-end">
                 {
-                    user ? (
+                    loading ? (
+                        <div className=" flex justify-end">
+                            <span className="loading loading-bars loading-xs"></span>
+                        </div>
+                    ) : user ? (
                         <div className=" flex gap-2 items-center">
                             <div className="tooltip tooltip-left" data-tip={user.displayName} >
                                 <img className=" w-12 h-12 rounded-full border border-primary object-cover object-center" src={user.photoURL ? user.photoURL : userIcon} alt="" />
