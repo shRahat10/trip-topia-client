@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { AuthContext } from "./provider/AuthProvider";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
@@ -12,6 +12,8 @@ const Login = () => {
     const { userLogin, googleSignIn, githubSignIn } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors }, } = useForm()
     const [showPass, setShowPass] = useState(false);
+    const location = useLocation();
+    const navigate = useNavigate();
 
     const onSubmit = (data) => {
         const { email, password } = data;
@@ -20,6 +22,7 @@ const Login = () => {
             .then(result => {
                 console.log(result);
                 toast.success('Successfully Logged In');
+                navigate(location?.state ? location.state : "/");
             })
             .catch(error => {
                 console.log(error);
