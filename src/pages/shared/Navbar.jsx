@@ -41,7 +41,7 @@ const Navbar = () => {
                     : " "
             }
             >
-                Add Tourists Spots
+                Add Spot
             </NavLink>
 
             <NavLink to={"/my-lists"} className={({ isActive }) =>
@@ -75,7 +75,7 @@ const Navbar = () => {
             </div>
 
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1 flex gap-4">
+                <ul className="menu menu-horizontal px-1 flex gap-8">
                     {links}
                 </ul>
             </div>
@@ -85,7 +85,7 @@ const Navbar = () => {
                     user ? (
                         <div className=" flex gap-2 items-center">
                             <div className="tooltip tooltip-left" data-tip={user.displayName} >
-                                <img className=" w-12 h-12 rounded-full object-cover object-center" src={user.photoURL ? user.photoURL : userIcon} alt="" />
+                                <img className=" w-12 h-12 rounded-full border border-primary object-cover object-center" src={user.photoURL ? user.photoURL : userIcon} alt="" />
                             </div>
                             <button onClick={handleUserLogout} className="bg-primary text-white py-2 px-4 rounded hover:bg-transparent hover:outline hover:outline-1 hover:outline-primary hover:text-primary transition duration-300 ease-in-out">
                                 Logout
