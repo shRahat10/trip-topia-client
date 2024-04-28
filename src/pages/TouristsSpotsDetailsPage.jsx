@@ -21,7 +21,7 @@ const TouristsSpotsDetailsPage = () => {
                             <p>{details.location}, {details.country}</p>
                         </div>
                         <p>{details.description}</p>
-                        <p><strong>Cost:</strong> ${details.cost} per person</p>
+                        <p><strong>Average Cost:</strong> ${details.cost} per person</p>
                         <p><strong>Seasonality:</strong> {details.seasonality}</p>
                         <p><strong>Travel Duration:</strong> {details.time} days</p>
                         <p><strong>Expected Visitors:</strong> {details.visitors}</p>

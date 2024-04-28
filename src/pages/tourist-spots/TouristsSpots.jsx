@@ -44,10 +44,10 @@ const TouristsSpots = () => {
                                 <p className="text-xl font-semibold text-gray-800">{e.spot}</p>
                                 <p className="text-gray-600 h-24 overflow-hidden">{e.description}</p>
                                 <div className=" space-y-2">
-                                    <p className="text-gray-700">Cost: ${e.cost} per day</p>
-                                    <p className="text-gray-700">Visitors: {e.visitors}</p>
-                                    <p className="text-gray-700">Travel Time: {e.time} days</p>
-                                    <p className="text-gray-700">Seasonality: {e.seasonality}</p>
+                                    <p className="text-gray-700"><span className=" font-bold">Average Cost:</span> ${e.cost} per day</p>
+                                    <p className="text-gray-700"><span className=" font-bold">Visitors:</span> {e.visitors}</p>
+                                    <p className="text-gray-700"><span className=" font-bold">Travel Time:</span> {e.time} days</p>
+                                    <p className="text-gray-700"><span className=" font-bold">Seasonality:</span> {e.seasonality}</p>
                                 </div>
                                 <Link to={`/tourists-spots-details-page/${e._id}`}>
                                 <button className="mt-4 text-white bg-primary hover:bg-primary-dark font-semibold py-2 px-4 rounded flex items-center gap-1">
