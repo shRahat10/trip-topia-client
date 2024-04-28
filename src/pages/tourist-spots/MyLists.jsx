@@ -13,6 +13,13 @@ const MyLists = () => {
     const filterData = data?.filter((e) => e.email === user?.email);
     const [count, setCount] = useState(5);
 
+    const formatDate = (timestamp) => {
+        if (!timestamp) return "";
+        const date = new Date(parseInt(timestamp));
+        const options = { day: 'numeric', month: 'long', year: 'numeric' };
+        return date.toLocaleDateString('en-US', options);
+    };
+
     const handleSetCount = () => {
         setCount(count + 3);
     }
@@ -51,7 +58,18 @@ const MyLists = () => {
     }
 
     return (
-        <>
+        <div>
+            <div className="relative w-fit mx-auto mb-20 text-center">
+                <img className="w-36 h-36 rounded-full object-center object-cover mx-auto mb-4" src={user.photoURL} alt="Profile" />
+                <h1 className="text-xl font-bold text-gray-700">{user.displayName}</h1>
+                <p className="text-gray-700">{user.email}</p>
+                <p className="text-gray-500">Member Since: {formatDate(user.metadata.createdAt)}</p>
+                <Link className="absolute top-0 right-0">
+                    <button className="p-2">
+                        <FaRegEdit size={23} />
+                    </button>
+                </Link>
+            </div>
             <div className="grid grid-cols-1 gap-6">
                 {filterData?.slice(0, count).map((e, idx) => (
                     <div key={idx} className="grid grid-cols-1 lg:grid-cols-3 gap-2 bg-white rounded-lg overflow-hidden shadow-lg">
@@ -81,7 +99,8 @@ const MyLists = () => {
                         <button onClick={handleSetCount} className=" text-primary border border-primary py-2 px-4 rounded">Show More</button>
                     )
                 }
-            </div></>
+            </div>
+        </div>
     );
 };
 

@@ -10,6 +10,7 @@ import MyLists from "../pages/tourist-spots/MyLists";
 import TouristsSpotsDetailsPage from "../pages/TouristsSpotsDetailsPage";
 import UpdateTouristsSpots from "../pages/tourist-spots/UpdateTouristsSpots";
 import CountrySpots from "../pages/CountrySpots";
+import PrivateRouter from "../router/PrivateRouter";
 
 const Router = createBrowserRouter ([
     {
@@ -39,7 +40,7 @@ const Router = createBrowserRouter ([
             },
             {
                 path: '/my-lists',
-                element: <MyLists></MyLists>,
+                element: <PrivateRouter><MyLists></MyLists></PrivateRouter>,
             },
             {
                 path: '/tourists-spots-details-page/:id',

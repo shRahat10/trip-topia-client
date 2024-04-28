@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
+import userIcon from "../../assets/images/userIcon.webp"
 
 const Navbar = () => {
     const { user, userLogout } = useContext(AuthContext);
@@ -51,6 +52,15 @@ const Navbar = () => {
             >
                 My Lists
             </NavLink>
+
+            <NavLink to={"/profile"} className={({ isActive }) =>
+                isActive
+                    ? "border-b-2 border-primary font-bold text-primary"
+                    : " "
+            }
+            >
+                Profile
+            </NavLink>
         </>
     );
 
@@ -80,24 +90,32 @@ const Navbar = () => {
             </div>
 
             <div className="navbar-end">
-                {user ? (
-                    <button onClick={handleUserLogout} className="bg-primary text-white py-2 px-4 rounded hover:bg-transparent hover:outline hover:outline-1 hover:outline-primary hover:text-primary transition duration-300 ease-in-out">
-                        Logout
-                    </button>
-                ) : (
-                    <span className="flex gap-2">
-                        <Link to={"/login"}>
-                            <button className="bg-primary text-white py-2 px-4 rounded hover:bg-transparent hover:outline hover:outline-1 hover:outline-primary hover:text-primary transition duration-300 ease-in-out">
-                                Login
+                {
+                    user ? (
+                        <div className=" flex gap-2 items-center">
+                            <div className="tooltip tooltip-left" data-tip={user.displayName} >
+                                <img className=" w-12 h-12 rounded-full object-cover object-center" src={user.photoURL ? user.photoURL : userIcon} alt="" />
+                            </div>
+                            <button onClick={handleUserLogout} className="bg-primary text-white py-2 px-4 rounded hover:bg-transparent hover:outline hover:outline-1 hover:outline-primary hover:text-primary transition duration-300 ease-in-out">
+                                Logout
                             </button>
-                        </Link>
-                        <Link to={"/register"}>
-                            <button className="bg-primary text-white py-2 px-4 rounded hover:bg-transparent hover:outline hover:outline-1 hover:outline-primary hover:text-primary transition duration-300 ease-in-out">
-                                Register
-                            </button>
-                        </Link>
-                    </span>
-                )}
+                        </div>
+
+                    ) : (
+                        <span className="flex gap-2">
+                            <Link to={"/login"}>
+                                <button className="bg-primary text-white py-2 px-4 rounded hover:bg-transparent hover:outline hover:outline-1 hover:outline-primary hover:text-primary transition duration-300 ease-in-out">
+                                    Login
+                                </button>
+                            </Link>
+                            <Link to={"/register"}>
+                                <button className="bg-primary text-white py-2 px-4 rounded hover:bg-transparent hover:outline hover:outline-1 hover:outline-primary hover:text-primary transition duration-300 ease-in-out">
+                                    Register
+                                </button>
+                            </Link>
+                        </span>
+                    )
+                }
             </div>
         </div>
     );
