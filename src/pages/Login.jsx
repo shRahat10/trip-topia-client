@@ -35,6 +35,7 @@ const Login = () => {
             .then(result => {
                 console.log(result);
                 toast.success('Successfully Logged In');
+                navigate(location?.state ? location.state : "/");
             })
             .catch(error => {
                 console.log(error);
@@ -46,6 +47,7 @@ const Login = () => {
             .then(result => {
                 console.log(result);
                 toast.success('Successfully Logged In');
+                navigate(location?.state ? location.state : "/");
             })
             .catch(error => {
                 console.log(error);
