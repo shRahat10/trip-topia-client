@@ -45,7 +45,7 @@ const UpdateTouristsSpots = () => {
         </Helmet>
             <h1 className=" text-center mb-4 text-3xl">Update Tourists Spot</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div className=" grid grid-cols-2 gap-10">
+                <div className=" grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div className="form-control ">
                         <label className="label">
                             <span className="label-text">Image Url</span>
@@ -110,7 +110,7 @@ const UpdateTouristsSpots = () => {
                             <input type="text" name="visitors" defaultValue={filterData?.visitors} placeholder="Total Visitors Per Year" {...register("visitors", { required: true })} className="input border border-gray-300 focus:outline-none focus:border-primary w-full" />
                         </label>
                     </div>
-                    <div className="form-control col-span-2">
+                    <div className="form-control md:col-span-2">
                         <label className="label">
                             <span className="label-text">Short Description</span>
                         </label>

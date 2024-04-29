@@ -56,8 +56,8 @@ const MyLists = () => {
         Swal.fire({
             title: 'Edit Profile',
             html:
-                `<input id="swal-input-name" class="swal2-input" placeholder="Name" value="${user.displayName}">` +
-                `<input id="swal-input-photoUrl" class="swal2-input" placeholder="Photo URL" value="${user.photoURL}">`,
+                `<input id="swal-input-name" class="swal2-input w-3/5 md:w-4/5" placeholder="Name" value="${user.displayName}">` +
+                `<input id="swal-input-photoUrl" class="swal2-input w-3/5 md:w-4/5" placeholder="Photo URL" value="${user.photoURL}">`,
             focusConfirm: false,
             preConfirm: () => {
                 const name = Swal.getPopup().querySelector('#swal-input-name').value;
