@@ -19,12 +19,12 @@ const QuesAndAns = () => {
     return (
         <div>
             <div className='App text-center mb-6'>
-                <span className="text-3xl font-semibold">{head}</span>
+                <span className="text-3xl font-semibold dark:text-white">{head}</span>
                 <Cursor cursorColor='red' />
             </div>
             <div className=" grid grid-cols-1 md:grid-cols-3 items-center">
                 <div>{View}</div>
-                <div className="col-span-2 join join-vertical w-full">
+                <div className="col-span-2 join join-vertical w-full dark:text-white">
                     <div className="collapse collapse-arrow join-item border border-base-300">
                         <input type="radio" name="my-accordion-4" defaultChecked />
                         <div className="collapse-title text-xl font-medium">

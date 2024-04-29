@@ -17,7 +17,7 @@ const TouristsSpotsDetailsPage = () => {
             <title>Trip Topia | Spot Details</title>
         </Helmet>
             {details ? (
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center justify-center">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center justify-center dark:text-white">
                     <img src={details.image} alt={details.spot} className=" rounded-md w-full h-80 object-cover mr-8" />
                     <div className=" flex flex-col lg:space-y-2 xl:space-y-4">
                         <div>

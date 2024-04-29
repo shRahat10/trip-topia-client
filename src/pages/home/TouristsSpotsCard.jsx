@@ -15,13 +15,13 @@ const TouristsSpotsCard = () => {
     return (
         <div>
             <div className='App text-center mb-6'>
-                <span className="text-3xl font-semibold">{head}</span>
+                <span className="text-3xl font-semibold dark:text-white">{head}</span>
                 <Cursor cursorColor='red' />
             </div>
             <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                 {
                     data?.slice(0, 6).map((e, idx) => (
-                        <div key={idx} className=" space-y-3 shadow border p-4 rounded">
+                        <div key={idx} className=" space-y-3 shadow border p-4 rounded dark:text-white">
                             <img className=" h-40 w-full object-cover object-center" src={e.image} alt="loading image..." />
                             <p className=" text-2xl font-semibold">{e.spot}</p>
                             <p className=" h-24 overflow-hidden">{e.description}</p>

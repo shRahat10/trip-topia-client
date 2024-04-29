@@ -40,12 +40,12 @@ const AddTouristSpot = () => {
             <Helmet>
                 <title>Trip Topia | Add Spot</title>
             </Helmet>
-            <h1 className=" text-center mb-4 text-3xl">Add Tourists Spot</h1>
+            <h1 className=" text-center mb-4 text-3xl dark:text-white">Add Tourists Spot</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className=" grid grid-cols-1 md:grid-cols-2 gap-10">
-                    <div className="form-control ">
+                    <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Image Url</span>
+                            <span className="label-text dark:text-white">Image Url</span>
                         </label>
                         <label className="input-group">
                             <input type="text" name="image" placeholder="Image Url" {...register("image", { required: true })} className="input border border-gray-300 focus:outline-none focus:border-primary w-full" />
@@ -54,7 +54,7 @@ const AddTouristSpot = () => {
                     </div>
                     <div className="form-control ">
                         <label className="label">
-                            <span className="label-text">Tourists Spot Name</span>
+                            <span className="label-text dark:text-white">Tourists Spot Name</span>
                         </label>
                         <label className="input-group">
                             <input type="text" name="spot" placeholder="Tourists Spot Name" {...register("spot", { required: true })} className="input border border-gray-300 focus:outline-none focus:border-primary w-full" />
@@ -63,7 +63,7 @@ const AddTouristSpot = () => {
                     </div>
                     <div className="form-control ">
                         <label className="label">
-                            <span className="label-text">Country Name</span>
+                            <span className="label-text dark:text-white">Country Name</span>
                         </label>
                         <label className="input-group">
                             <input type="text" name="country" placeholder="Country Name" {...register("country", { required: true })} className="input border border-gray-300 focus:outline-none focus:border-primary w-full" />
@@ -72,7 +72,7 @@ const AddTouristSpot = () => {
                     </div>
                     <div className="form-control ">
                         <label className="label">
-                            <span className="label-text">Location</span>
+                            <span className="label-text dark:text-white">Location</span>
                         </label>
                         <label className="input-group">
                             <input type="text" name="location" placeholder="Location" {...register("location", { required: true })} className="input border border-gray-300 focus:outline-none focus:border-primary w-full" />
@@ -81,7 +81,7 @@ const AddTouristSpot = () => {
                     </div>
                     <div className="form-control ">
                         <label className="label">
-                            <span className="label-text">Average Cost</span>
+                            <span className="label-text dark:text-white">Average Cost</span>
                         </label>
                         <label className="input-group">
                             <input type="text" name="cost" placeholder="Average Cost" {...register("cost", { required: true })} className="input border border-gray-300 focus:outline-none focus:border-primary w-full" />
@@ -90,7 +90,7 @@ const AddTouristSpot = () => {
                     </div>
                     <div className="form-control ">
                         <label className="label">
-                            <span className="label-text">Seasonality</span>
+                            <span className="label-text dark:text-white">Seasonality</span>
                         </label>
                         <label className="input-group">
                             <input type="text" name="seasonality" placeholder="Seasonality" {...register("seasonality", { required: true })} className="input border border-gray-300 focus:outline-none focus:border-primary w-full" />
@@ -99,7 +99,7 @@ const AddTouristSpot = () => {
                     </div>
                     <div className="form-control ">
                         <label className="label">
-                            <span className="label-text">Travel Time</span>
+                            <span className="label-text dark:text-white">Travel Time</span>
                         </label>
                         <label className="input-group">
                             <input type="text" name="time" placeholder="Travel Time" {...register("time", { required: true })} className="input border border-gray-300 focus:outline-none focus:border-primary w-full" />
@@ -108,7 +108,7 @@ const AddTouristSpot = () => {
                     </div>
                     <div className="form-control ">
                         <label className="label">
-                            <span className="label-text">Total Visitors Per Year</span>
+                            <span className="label-text dark:text-white">Total Visitors Per Year</span>
                         </label>
                         <label className="input-group">
                             <input type="text" name="visitors" placeholder="Total Visitors Per Year" {...register("visitors", { required: true })} className="input border border-gray-300 focus:outline-none focus:border-primary w-full" />
@@ -117,7 +117,7 @@ const AddTouristSpot = () => {
                     </div>
                     <div className="form-control md:col-span-2">
                         <label className="label">
-                            <span className="label-text">Short Description</span>
+                            <span className="label-text dark:text-white">Short Description</span>
                         </label>
                         <div className="input-group">
                             <textarea name="description" placeholder="Short Description" {...register("description", { required: true })} className="pt-3 h-20 input border border-gray-300 focus:outline-none focus:border-primary w-full"></textarea>
@@ -126,7 +126,7 @@ const AddTouristSpot = () => {
                     </div>
                     <div className="form-control ">
                         <label className="label">
-                            <span className="label-text">User Email</span>
+                            <span className="label-text dark:text-white">User Email</span>
                         </label>
                         <label className="input-group">
                             <input readOnly type="text" name="email" defaultValue={user ? user.email : ''} placeholder="User Email" {...register("email", { required: true })} className="input border border-gray-300 focus:outline-none focus:border-primary w-full" />
@@ -134,7 +134,7 @@ const AddTouristSpot = () => {
                     </div>
                     <div className="form-control ">
                         <label className="label">
-                            <span className="label-text">User Name</span>
+                            <span className="label-text dark:text-white">User Name</span>
                         </label>
                         <label className="input-group">
                             <input readOnly type="text" name="name" defaultValue={user ? user.displayName : ''} placeholder="User Name" {...register("name", { required: true })} className="input border border-gray-300 focus:outline-none focus:border-primary w-full" />

@@ -18,29 +18,29 @@ const Team = () => {
     })
 
     return (
-        <div className=" border p-10 bg-gray-50 rounded border-primary">
-            <div className='App text-center mb-3'>
+        <div className=" border p-10 bg-gray-50 dark:bg-transparent rounded border-primary">
+            <div className='App text-center mb-3 dark:text-white'>
                 <span className="text-3xl font-semibold">{head}</span>
                 <Cursor cursorColor='red' />
             </div>
-            <div className='App text-center md:h-20 mb-6'>
+            <div className='App text-center md:h-20 mb-6 dark:text-white'>
                 <span>{text}</span>
                 {isTyping && <Cursor cursorColor='red' />}
             </div>
-            <div className=" flex flex-wrap gap-10  justify-center">
-                <div className=" bg-white w-56 p-6 border rounded shadow-md text-center space-y-2">
+            <div className=" flex flex-wrap gap-10  justify-center dark:text-white">
+                <div className=" bg-white dark:bg-transparent w-56 p-6 border rounded shadow-md text-center space-y-2">
                     <img className=" border-2 border-primary rounded-full" src={team1} alt="" />
                     <h1 className=" text-xl font-bold">John Doe</h1>
                     <p className=" text-sm">CEO</p>
                     <p className=" text-xs">john.doe@gmail.com</p>
                 </div>
-                <div className=" bg-white w-56 p-6 border rounded shadow-md text-center space-y-2">
+                <div className=" bg-white dark:bg-transparent w-56 p-6 border rounded shadow-md text-center space-y-2">
                     <img className=" border-2 border-primary rounded-full" src={team2} alt="" />
                     <h1 className=" text-xl font-bold">Jane Smith</h1>
                     <p className=" text-sm">Marketing Manager</p>
                     <p className=" text-xs">jane.smith@gmail.com</p>
                 </div>
-                <div className=" bg-white w-56 p-6 border rounded shadow-md text-center space-y-2">
+                <div className=" bg-white dark:bg-transparent w-56 p-6 border rounded shadow-md text-center space-y-2">
                     <img className=" border-2 border-primary rounded-full" src={team3} alt="" />
                     <h1 className=" text-xl font-bold">Michael Brown</h1>
                     <p className=" text-sm">Technical Lead</p>
