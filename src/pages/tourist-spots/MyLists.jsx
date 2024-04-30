@@ -90,7 +90,7 @@ const MyLists = () => {
                 <img className="w-36 h-36 rounded-full object-center object-cover mx-auto mb-4" src={user.photoURL ? user.photoURL : userIcon} alt="" />
                 <h1 className="text-xl font-bold text-gray-700 dark:text-white">{user.displayName}</h1>
                 <p className="text-gray-700 dark:text-white">{user.email}</p>
-                <button onClick={handleEditProfile} className="p-2 absolute top-0 right-0">
+                <button onClick={handleEditProfile} className="p-2 absolute top-0 right-0 dark:text-white">
                     <FaRegEdit size={23} />
                 </button>
             </div>

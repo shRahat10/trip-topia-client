@@ -21,11 +21,6 @@ const Navbar = () => {
         }
     }, []);
 
-    // useEffect(() => {
-    //     localStorage.setItem("theme", theme);
-    // }, [theme])
-
-
     const handleTheme = () => {
         // console.log("clicked");
 
@@ -133,7 +128,7 @@ const Navbar = () => {
                             <button onClick={handleUserLogout} className="bg-primary text-white py-2 px-4 rounded hover:bg-transparent hover:outline hover:outline-1 hover:outline-primary hover:text-primary transition duration-300 ease-in-out">
                                 Logout
                             </button>
-                            <div className="tooltip tooltip-left" data-tip={user.displayName} >
+                            <div className="tooltip tooltip-bottom" data-tip={user.displayName} >
                                 <img className=" w-12 h-12 rounded-full border border-primary object-cover object-center" src={user.photoURL ? user.photoURL : userIcon} alt="" />
                             </div>
                         </div>

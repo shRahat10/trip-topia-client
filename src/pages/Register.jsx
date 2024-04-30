@@ -61,38 +61,38 @@ const Register = () => {
     }
 
     return (
-        <div className="md:w-[600px] mx-auto lg:mt-10">
+        <div className="md:w-[600px] mx-auto lg:mt-10 dark:text-white">
         <Helmet>
             <title>Trip Topia | Register</title>
         </Helmet>
             <form onSubmit={handleSubmit(onSubmit)} className=" space-y-6">
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text font-bold">Your name</span>
+                        <span className="label-text font-bold dark:text-white">Your name</span>
                     </label>
-                    <input name="name" type="text" placeholder="Enter your name" className="input rounded-none border-b-2 border-b-gray-300 focus:outline-none focus:border-0 focus:border-b-2 focus:border-b-primary" {...register("name", { required: true })} />
+                    <input name="name" type="text" placeholder="Enter your name" className="bg-transparent input rounded-none border-b-2 border-b-gray-300 focus:outline-none focus:border-0 focus:border-b-2 focus:border-b-primary" {...register("name", { required: true })} />
                     {errors.name && <span className=" text-red-500">This field is required</span>}
                 </div>
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text font-bold">Photo URL</span>
+                        <span className="label-text font-bold dark:text-white">Photo URL</span>
                     </label>
-                    <input name="photoUrl" type="text" placeholder="Enter your photo url" className="input rounded-none border-b-2 border-b-gray-300 focus:outline-none focus:border-0 focus:border-b-2 focus:border-b-primary" {...register("photoUrl", { required: true })} />
+                    <input name="photoUrl" type="text" placeholder="Enter your photo url" className="bg-transparent input rounded-none border-b-2 border-b-gray-300 focus:outline-none focus:border-0 focus:border-b-2 focus:border-b-primary" {...register("photoUrl", { required: true })} />
                     {errors.photoUrl && <span className=" text-red-500">This field is required</span>}
                 </div>
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text font-bold">Email address</span>
+                        <span className="label-text font-bold dark:text-white">Email address</span>
                     </label>
-                    <input name="email" type="email" placeholder="Enter your email address" className="input rounded-none border-b-2 border-b-gray-300 focus:outline-none focus:border-0 focus:border-b-2 focus:border-b-primary" {...register("email", { required: true })} />
+                    <input name="email" type="email" placeholder="Enter your email address" className="bg-transparent input rounded-none border-b-2 border-b-gray-300 focus:outline-none focus:border-0 focus:border-b-2 focus:border-b-primary" {...register("email", { required: true })} />
                     {errors.email && <span className=" text-red-500">This field is required</span>}
                 </div>
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text font-bold">Password</span>
+                        <span className="label-text font-bold dark:text-white">Password</span>
                     </label>
                     <span className=" flex relative">
-                        <input name="password" type={showPass ? 'text' : 'password'} placeholder="Enter your password" className=" w-full input rounded-none border-b-2 border-b-gray-300 focus:outline-none focus:border-0 focus:border-b-2 focus:border-b-primary" {...register("password", { required: true })} />
+                        <input name="password" type={showPass ? 'text' : 'password'} placeholder="Enter your password" className=" bg-transparent w-full input rounded-none border-b-2 border-b-gray-300 focus:outline-none focus:border-0 focus:border-b-2 focus:border-b-primary" {...register("password", { required: true })} />
                         <span className=" absolute top-1/3 right-3" onClick={() => setShowPass(!showPass)}>
                             {
                                 showPass ? <IoEyeOffOutline /> : <IoEyeOutline />

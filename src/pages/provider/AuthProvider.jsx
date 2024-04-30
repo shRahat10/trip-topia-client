@@ -15,21 +15,21 @@ const AuthProvider = ({ children }) => {
     const [dataCountry, setDataCountry] = useState(null);
 
     const googleSignIn = () => {
-        setLoading(true);
+        // setLoading(true);
         return signInWithPopup(auth, googleProvider)
     }
     const githubSignIn = () => {
-        setLoading(true);
+        // setLoading(true);
         return signInWithPopup(auth, githubProvider)
     }
 
     const userRegistration = (email, password) => {
-        setLoading(true);
+        // setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
     const userLogin = (email, password) => {
-        setLoading(true);
+        // setLoading(true);
         return signInWithEmailAndPassword(auth, email, password)
     }
 
@@ -38,7 +38,7 @@ const AuthProvider = ({ children }) => {
     }
 
     const updateUserProfile = (name, photoUrl) => {
-        setLoading(true);
+        // setLoading(true);
         return updateProfile(auth.currentUser, {
             displayName: name,
             photoURL: photoUrl
@@ -48,7 +48,10 @@ const AuthProvider = ({ children }) => {
                 displayName: name,
                 photoURL: photoUrl,
                 email: auth.currentUser.email,
-            }));
+            }))
+            .then(() => {
+                setLoading(false);
+            })
         }).catch(error => {
             console.log("Error updating profile: ", error);
         });

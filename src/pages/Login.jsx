@@ -27,6 +27,7 @@ const Login = () => {
             })
             .catch(error => {
                 console.log(error);
+                toast.error('Incorrect User Input');
             })
     }
 
@@ -39,6 +40,7 @@ const Login = () => {
             })
             .catch(error => {
                 console.log(error);
+                toast.error('Incorrect User Input');
             })
     }
 
@@ -51,28 +53,29 @@ const Login = () => {
             })
             .catch(error => {
                 console.log(error);
+                toast.error('Incorrect User Input');
             })
     }
 
     return (
-        <div className="md:w-[600px] mx-auto lg:mt-10">
+        <div className="md:w-[600px] mx-auto lg:mt-10 dark:text-white">
         <Helmet>
             <title>Trip Topia | Login</title>
         </Helmet>
             <form onSubmit={handleSubmit(onSubmit)} className=" space-y-6">
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text font-bold">Email address</span>
+                        <span className="label-text font-bold dark:text-white">Email address</span>
                     </label>
-                    <input name="email" type="email" placeholder="Enter your email address" className="input rounded-none border-b-2 border-b-gray-300 focus:outline-none focus:border-0 focus:border-b-2 focus:border-b-primary" {...register("email", { required: true })} />
+                    <input name="email" type="email" placeholder="Enter your email address" className="bg-transparent input rounded-none border-b-2 border-b-gray-300 focus:outline-none focus:border-0 focus:border-b-2 focus:border-b-primary" {...register("email", { required: true })} />
                     {errors.email && <span className=" text-red-500">This field is required</span>}
                 </div>
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text font-bold">Password</span>
+                        <span className="label-text font-bold dark:text-white">Password</span>
                     </label>
                     <span className=" flex relative">
-                        <input name="password" type={showPass ? 'text' : 'password'} placeholder="Enter your password" className=" w-full input rounded-none border-b-2 border-b-gray-300 focus:outline-none focus:border-0 focus:border-b-2 focus:border-b-primary" {...register("password", { required: true })} />
+                        <input name="password" type={showPass ? 'text' : 'password'} placeholder="Enter your password" className=" bg-transparent w-full input rounded-none border-b-2 border-b-gray-300 focus:outline-none focus:border-0 focus:border-b-2 focus:border-b-primary" {...register("password", { required: true })} />
                         <span className=" absolute top-1/3 right-3" onClick={() => setShowPass(!showPass)}>
                             {
                                 showPass ? <IoEyeOffOutline /> : <IoEyeOutline />
@@ -82,7 +85,7 @@ const Login = () => {
                     {errors.password && <span className=" text-red-500">This field is required</span>}
                 </div>
                 <div>
-                    <p className=" text-end text-gray-500">Forgot password?</p>
+                    <p className=" text-end text-gray-500 dark:text-white">Forgot password?</p>
                 </div>
                 <div className="form-control mt-6">
                     <button className="btn text-white bg-primary hover:bg-transparent hover:border hover:border-primary hover:text-primary transition duration-300 ease-in-out">Login</button>
