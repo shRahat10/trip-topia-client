@@ -11,7 +11,7 @@ import { Helmet } from "react-helmet-async";
 
 
 const MyLists = () => {
-    const { data, handleDeleteData, user, updateUserProfile } = useContext(AuthContext);
+    const { data, user, updateUserProfile, setData } = useContext(AuthContext);
     const filterData = data?.filter((e) => e.email === user?.email);
     const [count, setCount] = useState(5);
 
@@ -19,7 +19,7 @@ const MyLists = () => {
         setCount(count + 3);
     }
 
-    const handleDelete = id => {
+    const handleDelete = (id) => {
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -34,17 +34,24 @@ const MyLists = () => {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
-                    .then(data => {
-                        if (data.deletedCount > 0) {
+                    .then(deletedData => {
+                        if (deletedData.deletedCount > 0) {
+                            setData(prevData => prevData.filter(item => item._id !== id));
                             Swal.fire(
                                 'Deleted!',
-                                'Your Coffee has been deleted.',
+                                'Your tourist spot has been deleted.',
                                 'success'
                             )
-
-                            handleDeleteData(id);
                         }
                     })
+                    .catch(error => {
+                        console.error('Error deleting tourist spot:', error);
+                        Swal.fire({
+                            title: 'Error',
+                            text: 'Failed to delete tourist spot',
+                            icon: 'error',
+                        });
+                    });
             }
         })
     }
@@ -80,9 +87,9 @@ const MyLists = () => {
 
     return (
         <div>
-        <Helmet>
-            <title>Trip Topia | {user.displayName}</title>
-        </Helmet>
+            <Helmet>
+                <title>Trip Topia | {user.displayName}</title>
+            </Helmet>
             <div className="relative w-fit mx-auto mb-20 text-center">
                 <img className="w-36 h-36 rounded-full object-center object-cover mx-auto mb-4" src={user.photoURL ? user.photoURL : userIcon} alt="" />
                 <h1 className="text-xl font-bold text-gray-700 dark:text-white">{user.displayName}</h1>

@@ -57,10 +57,6 @@ const AuthProvider = ({ children }) => {
         });
     }
 
-    const handleDeleteData = id => {
-        setData((prev) => prev?.filter(e => e?._id !== id))
-    }
-
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
@@ -84,7 +80,7 @@ const AuthProvider = ({ children }) => {
     }, [])
 
     const authInfo = {
-        user, loading, data, setData, handleDeleteData, updateUserProfile, dataCountry, setLoading, googleSignIn, githubSignIn, userRegistration, userLogin, userLogout,
+        user, loading, data, setData, updateUserProfile, dataCountry, setLoading, googleSignIn, githubSignIn, userRegistration, userLogin, userLogout,
     }
 
     return (
