@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { BASE_URL } from "../../constent/constent";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
@@ -12,6 +12,7 @@ const UpdateTouristsSpots = () => {
     const { data } = useContext(AuthContext);
     const filterData = data?.find((e) => e._id === id);
     const { register, handleSubmit, } = useForm();
+    const navigate = useNavigate();
 
     const onSubmit = (data) => {
         // const { image, spot, country, location, cost, seasonality, time, visitors, description, email, name } = data;
@@ -34,15 +35,18 @@ const UpdateTouristsSpots = () => {
                         icon: 'success',
                         confirmButtonText: 'Ok'
                     })
+                        .then(() => {
+                            navigate("/my-lists");
+                        })
                 }
             })
     }
 
     return (
         <div className="border rounded-lg shadow p-10">
-        <Helmet>
-            <title>Trip Topia | Update Tourist Spot</title>
-        </Helmet>
+            <Helmet>
+                <title>Trip Topia | Update Tourist Spot</title>
+            </Helmet>
             <h1 className=" text-center mb-4 text-3xl dark:text-white">Update Tourists Spot</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className=" grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -117,22 +121,6 @@ const UpdateTouristsSpots = () => {
                         <div className="input-group">
                             <textarea name="description" defaultValue={filterData?.description} placeholder="Short Description" {...register("description", { required: true })} className="pt-3 h-20 input border border-gray-300 focus:outline-none focus:border-primary w-full"></textarea>
                         </div>
-                    </div>
-                    <div className="form-control ">
-                        <label className="label">
-                            <span className="label-text dark:text-white">User Email</span>
-                        </label>
-                        <label className="input-group">
-                            <input readOnly type="text" name="email" defaultValue={filterData?.email} placeholder="User Email" {...register("email", { required: true })} className="input border border-gray-300 focus:outline-none focus:border-primary w-full" />
-                        </label>
-                    </div>
-                    <div className="form-control ">
-                        <label className="label">
-                            <span className="label-text dark:text-white">User Name</span>
-                        </label>
-                        <label className="input-group">
-                            <input readOnly type="text" name="name" defaultValue={filterData?.name} placeholder="User Name" {...register("name", { required: true })} className="input border border-gray-300 focus:outline-none focus:border-primary w-full" />
-                        </label>
                     </div>
                 </div>
                 <input type="submit" value="Update Tourist Spot" className="btn btn-block bg-primary hover:bg-transparent hover:outline hover:outline-1 hover:outline-primary hover:text-primary transition duration-300 ease-in-out text-white mt-10" />

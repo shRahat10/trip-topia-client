@@ -84,7 +84,7 @@ const MyLists = () => {
     return (
         <div>
         <Helmet>
-            <title>Trip Topia | My Lists</title>
+            <title>Trip Topia | {user.displayName}</title>
         </Helmet>
             <div className="relative w-fit mx-auto mb-20 text-center">
                 <img className="w-36 h-36 rounded-full object-center object-cover mx-auto mb-4" src={user.photoURL ? user.photoURL : userIcon} alt="" />
