@@ -1,15 +1,14 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
-import userIcon from "../../assets/images/userIcon.webp"
+import userIcon from "../../assets/images/userIcon.webp";
 
 const Navbar = () => {
     const { user, userLogout, loading } = useContext(AuthContext);
     const [isOpen, setIsOpen] = useState(false);
-
-
     const [theme, setTheme] = useState("light");
     const html = document.documentElement;
+    const navbarRef = useRef(null);
 
     useEffect(() => {
         const theme = localStorage.getItem("theme");
@@ -22,8 +21,6 @@ const Navbar = () => {
     }, []);
 
     const handleTheme = () => {
-        // console.log("clicked");
-
         if (theme === "light") {
             html.classList.remove("light");
             html.classList.add("dark");
@@ -40,6 +37,20 @@ const Navbar = () => {
     const handleUserLogout = () => {
         userLogout();
     };
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (isOpen && navbarRef.current && !navbarRef.current.contains(event.target)) {
+                setIsOpen(false);
+            }
+        };
+
+        document.body.addEventListener('click', handleClickOutside);
+
+        return () => {
+            document.body.removeEventListener('click', handleClickOutside);
+        };
+    }, [isOpen]);
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
@@ -88,16 +99,16 @@ const Navbar = () => {
     );
 
     return (
-        <div className="navbar mb-16 px-0 bg-transparent py-4">
+        <div className="navbar mb-16 px-0 bg-transparent py-4" ref={navbarRef}>
             <div className="navbar-start">
                 <div className="dropdown">
-                    <div tabIndex={0} className=" pr-4 lg:hidden" onClick={toggleMenu}>
+                    <div tabIndex={0} className="pr-4 lg:hidden" onClick={toggleMenu}>
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
                         </svg>
                     </div>
                     <ul className={`menu menu-sm dropdown-content mt-3 z-[50] p-2 shadow-sm bg-base-100 rounded w-40 ${isOpen ? "translate-x-0" : "-translate-x-96"
-                        } transition-transform duration-300 ease-in-out`}>
+                        } dark:bg-slate-900 dark:border dark:border-primary dark:text-white transition-transform duration-300 ease-in-out`}>
                         {links}
                     </ul>
                 </div>
@@ -124,14 +135,19 @@ const Navbar = () => {
                             <span className="loading loading-bars loading-xs"></span>
                         </div>
                     ) : user ? (
-                        <div className=" flex gap-2 items-center">
-                            <button onClick={handleUserLogout} className="bg-primary text-white py-2 px-4 rounded hover:bg-transparent hover:outline hover:outline-1 hover:outline-primary hover:text-primary transition duration-300 ease-in-out">
-                                Logout
-                            </button>
-                            <div className="tooltip tooltip-bottom" data-tip={user.displayName} >
-                                <img className=" w-12 h-12 rounded-full border border-primary object-cover object-center" src={user.photoURL ? user.photoURL : userIcon} alt="" />
+                        <>
+                            <div className="dropdown dropdown-hover dropdown-bottom dropdown-end">
+                                <div tabIndex={0} role="button">
+                                    <img className="w-12 h-12 rounded-full border border-primary object-cover object-center" src={user.photoURL ? user.photoURL : userIcon} alt="" />
+                                </div>
+                                <ul tabIndex={0} className="dropdown-content dark:bg-slate-900 dark:border dark:border-primary dark:text-white z-[50] menu p-3 shadow bg-base-100 rounded w-44 space-y-2 mt-2">
+                                    <li>{user.displayName}</li>
+                                    <li><button onClick={handleUserLogout} className="bg-primary w-20 text-white py-1 px-4 rounded hover:bg-transparent hover:outline hover:outline-1 hover:outline-primary hover:text-primary transition duration-300 ease-in-out">
+                                        Logout
+                                    </button></li>
+                                </ul>
                             </div>
-                        </div>
+                        </>
 
                     ) : (
                         <span className="flex gap-2">
