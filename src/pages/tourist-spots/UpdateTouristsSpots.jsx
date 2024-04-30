@@ -9,37 +9,45 @@ import { Helmet } from "react-helmet-async";
 
 const UpdateTouristsSpots = () => {
     const { id } = useParams();
-    const { data } = useContext(AuthContext);
+    const { data, setData } = useContext(AuthContext);
     const filterData = data?.find((e) => e._id === id);
     const { register, handleSubmit, } = useForm();
     const navigate = useNavigate();
 
     const onSubmit = (data) => {
-        // const { image, spot, country, location, cost, seasonality, time, visitors, description, email, name } = data;
-        console.log(data);
-
         fetch(BASE_URL + `/tourists-spots/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
-
             body: JSON.stringify(data)
         })
             .then(res => res.json())
-            .then(data => {
-                if (data.modifiedCount > 0) {
+            .then(updatedData => {
+                if (updatedData.modifiedCount > 0) {
                     Swal.fire({
                         title: 'Success!',
                         text: 'Updated Successfully',
                         icon: 'success',
                         confirmButtonText: 'Ok'
+                    }).then(() => {
+                        fetch(BASE_URL + '/tourists-spots')
+                            .then(res => res.json())
+                            .then(data => {
+                                setData(data);
+                            })
+                        navigate("/my-lists");
                     })
-                        .then(() => {
-                            navigate("/my-lists");
-                        })
                 }
             })
+            .catch(error => {
+                console.error('Error updating tourist spot:', error);
+                Swal.fire({
+                    title: 'Error',
+                    text: 'Failed to update tourist spot',
+                    icon: 'error',
+                });
+            });
     }
 
     return (

@@ -7,19 +7,15 @@ import { Helmet } from "react-helmet-async";
 
 
 const AddTouristSpot = () => {
-    const { user } = useContext(AuthContext);
+    const { user, setData } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors }, } = useForm()
 
     const onSubmit = (data) => {
-        // const { image, spot, country, location, cost, seasonality, time, visitors, description, email, name } = data;
-        console.log(data);
-
         fetch(BASE_URL + '/tourists-spots', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-
             body: JSON.stringify(data)
         })
             .then(res => res.json())
@@ -30,9 +26,23 @@ const AddTouristSpot = () => {
                         text: 'Added Successfully',
                         icon: 'success',
                         confirmButtonText: 'Ok'
-                    })
+                    }).then(() => {
+                        fetch(BASE_URL + '/tourists-spots')
+                            .then(res => res.json())
+                            .then(updatedData => {
+                                setData(updatedData);
+                            })
+                    });
                 }
             })
+            .catch(error => {
+                console.error('Error adding tourist spot:', error);
+                Swal.fire({
+                    title: 'Error',
+                    text: 'Failed to add tourist spot',
+                    icon: 'error',
+                });
+            });
     }
 
     return (
