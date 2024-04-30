@@ -57,7 +57,7 @@ const AuthProvider = ({ children }) => {
         });
     }
 
-    const handleUpdateData = id => {
+    const handleDeleteData = id => {
         setData((prev) => prev?.filter(e => e?._id !== id))
     }
 
@@ -84,7 +84,7 @@ const AuthProvider = ({ children }) => {
     }, [])
 
     const authInfo = {
-        user, loading, data, setData, handleUpdateData, updateUserProfile, dataCountry, setLoading, googleSignIn, githubSignIn, userRegistration, userLogin, userLogout,
+        user, loading, data, setData, handleDeleteData, updateUserProfile, dataCountry, setLoading, googleSignIn, githubSignIn, userRegistration, userLogin, userLogout,
     }
 
     return (

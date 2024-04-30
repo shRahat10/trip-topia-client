@@ -11,7 +11,7 @@ import { Helmet } from "react-helmet-async";
 
 
 const MyLists = () => {
-    const { data, handleUpdateData, user, updateUserProfile } = useContext(AuthContext);
+    const { data, handleDeleteData, user, updateUserProfile } = useContext(AuthContext);
     const filterData = data?.filter((e) => e.email === user?.email);
     const [count, setCount] = useState(5);
 
@@ -42,7 +42,7 @@ const MyLists = () => {
                                 'success'
                             )
 
-                            handleUpdateData(id);
+                            handleDeleteData(id);
                         }
                     })
             }
