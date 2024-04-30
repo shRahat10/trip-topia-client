@@ -20,7 +20,6 @@ const MyLists = () => {
     }
 
     const handleDelete = id => {
-        console.log(id);
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -31,8 +30,6 @@ const MyLists = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-
-
                 fetch(BASE_URL + `/tourists-spots/${id}`, {
                     method: 'DELETE'
                 })
