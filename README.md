@@ -4,7 +4,7 @@
 Trip Topia is a tourism-focused website that showcases tourist spots in Southeast Asia. Explore breathtaking destinations, plan your next adventure, and add your favorite spots to your personal list.
 
 ## Live Site URL
-```  ```
+``` https://trip-topia.web.app ```
 
 ## Features
 - Responsive design for mobile, tablet, and desktop views.
