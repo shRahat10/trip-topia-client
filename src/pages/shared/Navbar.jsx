@@ -2,6 +2,8 @@ import { useContext, useEffect, useState, useRef } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import userIcon from "../../assets/images/userIcon.webp";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const Navbar = () => {
     const { user, userLogout, loading } = useContext(AuthContext);
@@ -35,7 +37,11 @@ const Navbar = () => {
     };
 
     const handleUserLogout = () => {
-        userLogout();
+        userLogout()
+        .then(()=>{
+            toast.success("User Logged Out")
+        })
+        
     };
 
     useEffect(() => {
